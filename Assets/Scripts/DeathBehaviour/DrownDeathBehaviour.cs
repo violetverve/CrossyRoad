@@ -6,6 +6,8 @@ public class DrownDeathBehaviour : IDeathBehaviour {
     private static string DROWN_TRIGGER = "Drown";
 
     public void Execute() {
+        Zoom.Instance.ZoomIn();
+
         PlayerVisual.Instance.PlayAnimation(DROWN_TRIGGER);
 
         Vector3 position = Player.Instance.transform.position;

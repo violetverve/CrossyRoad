@@ -48,7 +48,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingObjectSO: {fileID: 11400000, guid: 98f9856c9592b054aa9898bfda62c7a6, type: 2}
-  direction: {x: 0, y: 0, z: 0}
 --- !u!65 &8035296353688089964
 BoxCollider:
   m_ObjectHideFlags: 0

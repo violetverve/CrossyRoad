@@ -7,6 +7,10 @@ public class HitIntoVehicleDeathBehaviour : IDeathBehaviour {
     private Transform vehicleTransform;
 
     public void Execute() {
+        Zoom.Instance.ZoomIn();
+
+        FollowTarget.Instance.SetTarget(null);
+
         PlayerVisual.Instance.PlayAnimation(HIT_INTO_VEHICLE_TRIGGER);
 
         Player player = Player.Instance;

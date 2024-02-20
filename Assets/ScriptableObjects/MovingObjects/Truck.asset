@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Truck
   m_EditorClassIdentifier: 
   objectTransform: {fileID: 1370350317053164611, guid: 8bb43bbaf81d0f4468cfedc2d9f687b4, type: 3}
-  speed: 2
+  speed: 3
