@@ -28,13 +28,11 @@ public class CrossyGameManager : MonoBehaviour {
         Player.Instance.OnPlayerDied += Player_OnPlayerDied;
     }
 
-#pragma warning disable IDE0060 // Remove unused parameter
     private void Player_OnPlayerMoved(object sender, System.EventArgs e) {
         if (gameState == GameState.Start) {
             SetGameState(GameState.Playing);
         }
     }
-#pragma warning restore IDE0060 // Remove unused parameter
 
     private void Player_OnPlayerDied(object sender, System.EventArgs e) {
         SetGameState(GameState.Dead);
@@ -54,13 +52,11 @@ public class CrossyGameManager : MonoBehaviour {
         }
         this.gameState = gameState;
         OnGameStateChanged?.Invoke(this, EventArgs.Empty);
-
-        // Debug.Log("Game state changed to: " + gameState);
     }
 
     public void RestartGame() {
+        InventoryManager.Instance.Save();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        Debug.Log("Restarting game");
     }
 
 

@@ -11,22 +11,12 @@ public class GamePlayUI : MonoBehaviour {
     private void Start() {
         SetupTexts();
 
-        CrossyGameManager.Instance.OnGameStateChanged += CrossyGameManager_OnGameStateChanged;
-
-
         InventoryManager.Instance.OnCoinsChanged += InventoryManager_OnCoinsChanged;
         InventoryManager.Instance.OnScoreChanged += InventoryManager_OnScoreChanged;
 
-        Hide();
+        Show();
     }
 
-    private void CrossyGameManager_OnGameStateChanged(object sender, System.EventArgs e) {
-        if (CrossyGameManager.Instance.GetGameState() == CrossyGameManager.GameState.Playing) {
-            Show();
-        } else {
-            Hide();
-        }
-    }
 
     private void InventoryManager_OnCoinsChanged(object sender, System.EventArgs e) {
         coinText.text = InventoryManager.Instance.GetCoins().ToString();
@@ -40,8 +30,6 @@ public class GamePlayUI : MonoBehaviour {
     private void OnDestroy() {
         InventoryManager.Instance.OnCoinsChanged -= InventoryManager_OnCoinsChanged;
         InventoryManager.Instance.OnScoreChanged -= InventoryManager_OnScoreChanged;
-
-        CrossyGameManager.Instance.OnGameStateChanged -= CrossyGameManager_OnGameStateChanged;
     }
 
 

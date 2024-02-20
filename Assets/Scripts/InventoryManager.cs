@@ -4,6 +4,8 @@ using UnityEngine;
 using System;
 
 public class InventoryManager : MonoBehaviour {
+
+    private const string COINS_KEY = "coins";
     public static InventoryManager Instance { get; private set; }
     public event EventHandler OnCoinsChanged;
     public event EventHandler OnScoreChanged;
@@ -14,7 +16,7 @@ public class InventoryManager : MonoBehaviour {
     private void Awake() {
         Instance = this;
 
-        coins = PlayerPrefs.GetInt("coins", 0);
+        coins = LoadCoins();
         score = PlayerPrefs.GetInt("score", 0);
     }
 
@@ -42,5 +44,13 @@ public class InventoryManager : MonoBehaviour {
     public void AddScore(int score) {
         this.score += score;
         OnScoreChanged?.Invoke(this, EventArgs.Empty);
+    }
+
+    public void Save() {
+        PlayerPrefs.SetInt(COINS_KEY, coins);
+    }
+
+    private int LoadCoins() {
+        return PlayerPrefs.GetInt(COINS_KEY, 0);
     }
 }
