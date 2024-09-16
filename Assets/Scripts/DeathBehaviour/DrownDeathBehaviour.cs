@@ -1,12 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Camera;
 
-public class DrownDeathBehaviour : IDeathBehaviour {
+public class DrownDeathBehaviour : IDeathBehaviour
+{
     private static string DROWN_TRIGGER = "Drown";
 
-    public void Execute() {
-        Zoom.Instance.ZoomIn();
+    public void Execute()
+    {
+        Zoom.ZoomInStarted?.Invoke();
 
         PlayerVisual.Instance.PlayAnimation(DROWN_TRIGGER);
 

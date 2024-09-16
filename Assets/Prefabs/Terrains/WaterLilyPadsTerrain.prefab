@@ -131,14 +131,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c2ab43d27bdf1f49a9425041f84f5da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectPrefabsList:
+  _terrainObjects:
   - {fileID: 282925520742485989, guid: d575af7475e02b440bb8dd0a674ffd72, type: 3}
-  collectibleObjectSOList: []
-  minZPosition: -6
-  maxZPosition: 6
-  enableDeadZone: 0
-  deadZoneZ: 5
-  minObjectCount: 4
-  maxObjectCount: 6
-  yPosition: 0.3
-  rotate: 1
+  _collectibles: []
+  _minZPosition: -6
+  _maxZPosition: 6
+  _enableDeadZone: 0
+  _deadZoneZ: 5
+  _minObjectCount: 4
+  _maxObjectCount: 6
+  _yPosition: 0.3
+  _rotate: 1

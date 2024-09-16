@@ -1,15 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Camera;
 
-public class HitIntoVehicleDeathBehaviour : IDeathBehaviour {
+public class HitIntoVehicleDeathBehaviour : IDeathBehaviour
+{
     private static string HIT_INTO_VEHICLE_TRIGGER = "HitIntoVehicle";
-    private Transform vehicleTransform;
+    private Transform _vehicleTransform;
 
-    public void Execute() {
-        Zoom.Instance.ZoomIn();
+    public void Execute()
+    {
+        Zoom.ZoomInStarted?.Invoke();
 
-        FollowTarget.Instance.SetTarget(null);
+        FollowTarget.StopFollowingTarget?.Invoke();
 
         PlayerVisual.Instance.PlayAnimation(HIT_INTO_VEHICLE_TRIGGER);
 
@@ -18,10 +19,11 @@ public class HitIntoVehicleDeathBehaviour : IDeathBehaviour {
         player.SetKinematic(true);
         player.DisableCollider();
 
-        player.transform.SetParent(vehicleTransform);
+        player.transform.SetParent(_vehicleTransform);
     }
 
-    public void SetVehicleTransform(Transform vehicleTransform) {
-        this.vehicleTransform = vehicleTransform;
+    public void SetVehicleTransform(Transform vehicleTransform)
+    {
+        this._vehicleTransform = vehicleTransform;
     }
 }

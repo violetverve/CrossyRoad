@@ -2,55 +2,62 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectManager : MonoBehaviour {
-    [SerializeField] private List<Transform> objectPrefabsList;
-    [SerializeField] private List<CollactibleObjectSO> collectibleObjectSOList;
-    [SerializeField] private int minZPosition = -10;
-    [SerializeField] private int maxZPosition = 10;
+public class ObjectManager : MonoBehaviour
+{
+    [SerializeField] private List<Transform> _terrainObjects;
+    [SerializeField] private List<Transform> _collectibles;
+    [SerializeField] private int _minZPosition = -10;
+    [SerializeField] private int _maxZPosition = 10;
 
-    [SerializeField] private bool enableDeadZone = false;
-    [SerializeField] private int deadZoneZ = 5;
+    [SerializeField] private bool _enableDeadZone = false;
+    [SerializeField] private int _deadZoneZ = 5;
 
-    [SerializeField] private int minObjectCount = 2;
-    [SerializeField] private int maxObjectCount = 6;
+    [SerializeField] private int _minObjectCount = 2;
+    [SerializeField] private int _maxObjectCount = 6;
 
-    [SerializeField] private float yPosition = 0.5f;
-    [SerializeField] private bool rotate = false;
+    [SerializeField] private float _yPosition = 0.5f;
+    [SerializeField] private bool _rotate = false;
 
-    private HashSet<int> zPositions;
+    private HashSet<int> _zPositions;
 
-    private List<Transform> objectTransformsList;
+    private List<Transform> _spawnedObjects;
 
-    private void Awake() {
-        zPositions = new HashSet<int>();
-        objectTransformsList = new List<Transform>();
+    private void Awake()
+    {
+        _zPositions = new HashSet<int>();
+        _spawnedObjects = new List<Transform>();
     }
 
-    private void Start() {
-        int objectCount = Random.Range(minObjectCount, maxObjectCount);
+    private void Start()
+    {
+        int objectCount = Random.Range(_minObjectCount, _maxObjectCount);
 
-        for (int i = 0; i < objectCount; i++) {
+        for (int i = 0; i < objectCount; i++)
+        {
             SpawnObjectOnTerrain();
         }
 
         SpawnCollectibleWithChance();
     }
 
-    private void SpawnObjectOnTerrain() {
+    private void SpawnObjectOnTerrain()
+    {
         int zPosition;
 
-        do {
+        do
+        {
             zPosition = GetRandomZPosition();
-        } while (zPositions.Contains(zPosition));
+        } while (_zPositions.Contains(zPosition));
 
 
-        zPositions.Add(zPosition);
+        _zPositions.Add(zPosition);
 
-        Vector3 position = new Vector3(transform.position.x, yPosition, zPosition);
-        Transform newObject = objectPrefabsList[Random.Range(0, objectPrefabsList.Count)];
+        Vector3 position = new Vector3(transform.position.x, _yPosition, zPosition);
+        Transform newObject = _terrainObjects[Random.Range(0, _terrainObjects.Count)];
 
         Quaternion rotation = Quaternion.identity;
-        if (rotate) {
+        if (_rotate)
+        {
             int step = 90;
             int randomRotation = Random.Range(0, 4);
             rotation = Quaternion.Euler(0, step * randomRotation, 0);
@@ -59,75 +66,92 @@ public class ObjectManager : MonoBehaviour {
         Transform terrainObject = Instantiate(newObject, position, rotation);
         terrainObject.parent = transform;
 
-        objectTransformsList.Add(terrainObject);
+        _spawnedObjects.Add(terrainObject);
     }
 
-    private int GetRandomZPosition() {
+    private int GetRandomZPosition()
+    {
         int zPosition;
 
-        if (enableDeadZone) {
+        if (_enableDeadZone)
+        {
             bool spawnAboveDeadZone = Random.value > 0.5f;
-            if (spawnAboveDeadZone) {
-                zPosition = Random.Range(deadZoneZ, maxZPosition);
-            } else {
-                zPosition = Random.Range(minZPosition, -deadZoneZ);
+            if (spawnAboveDeadZone)
+            {
+                zPosition = Random.Range(_deadZoneZ, _maxZPosition);
             }
-        } else {
-            zPosition = Random.Range(minZPosition, maxZPosition);
+            else
+            {
+                zPosition = Random.Range(_minZPosition, -_deadZoneZ);
+            }
+        }
+        else
+        {
+            zPosition = Random.Range(_minZPosition, _maxZPosition);
         }
 
         return zPosition;
     }
 
-    private void SpawnCollectibleObject() {
+    private void SpawnCollectibleObject()
+    {
         int zPosition;
 
-        do {
-            zPosition = Random.Range(minZPosition, maxZPosition);
-        } while (zPositions.Contains(zPosition));
+        do
+        {
+            zPosition = Random.Range(_minZPosition, _maxZPosition);
+        } while (_zPositions.Contains(zPosition));
 
-        if (collectibleObjectSOList.Count == 0) {
+        if (_collectibles.Count == 0)
+        {
             return;
         }
 
-        int randomIndex = Random.Range(0, collectibleObjectSOList.Count);
+        int randomIndex = Random.Range(0, _collectibles.Count);
 
-        Transform collectibleObject = collectibleObjectSOList[randomIndex].objectTransform;
+        Transform collectibleObject = _collectibles[randomIndex];
 
-        Vector3 position = new Vector3(transform.position.x, yPosition, zPosition);
+        Vector3 position = new Vector3(transform.position.x, _yPosition, zPosition);
 
         Transform terrainObject = Instantiate(collectibleObject, position, Quaternion.identity);
         terrainObject.parent = transform;
     }
 
 
-    public void RepositionObjects() {
-        int newObjectsNum = Random.Range(minObjectCount, maxObjectCount);
+    public void RepositionObjects()
+    {
+        int newObjectsNum = Random.Range(_minObjectCount, _maxObjectCount);
 
-        zPositions.Clear();
+        _zPositions.Clear();
 
-        int curObjectsNum = objectTransformsList.Count;
-        
+        int curObjectsNum = _spawnedObjects.Count;
+
         int oldObjectsToReposition = Mathf.Min(newObjectsNum, curObjectsNum);
-        
+
         int newObjectsToSpawn = newObjectsNum - oldObjectsToReposition;
 
-        for (int i = 0; i < curObjectsNum; i++) {
-            if (i < oldObjectsToReposition) {
-                RepositionObeject(objectTransformsList[i]);
+        for (int i = 0; i < curObjectsNum; i++)
+        {
+            if (i < oldObjectsToReposition)
+            {
+                RepositionObeject(_spawnedObjects[i]);
             }
         }
 
-        if (curObjectsNum > newObjectsNum) {
-            for (int i = curObjectsNum - 1; i >= newObjectsNum; i--) {
-                Transform objectToDestroyTransform = objectTransformsList[i];
-                objectTransformsList.RemoveAt(i);
+        if (curObjectsNum > newObjectsNum)
+        {
+            for (int i = curObjectsNum - 1; i >= newObjectsNum; i--)
+            {
+                Transform objectToDestroyTransform = _spawnedObjects[i];
+                _spawnedObjects.RemoveAt(i);
                 Destroy(objectToDestroyTransform.gameObject);
             }
         }
 
-        if (newObjectsToSpawn > 0) {
-            for (int i = 0; i < newObjectsToSpawn; i++) {
+        if (newObjectsToSpawn > 0)
+        {
+            for (int i = 0; i < newObjectsToSpawn; i++)
+            {
                 SpawnObjectOnTerrain();
             }
         }
@@ -136,28 +160,33 @@ public class ObjectManager : MonoBehaviour {
     }
 
 
-    private void RepositionObeject(Transform objectTransform) {
+    private void RepositionObeject(Transform objectTransform)
+    {
         int zPosition;
 
-        do {
+        do
+        {
             zPosition = GetRandomZPosition();
-        } while (zPositions.Contains(zPosition));
+        } while (_zPositions.Contains(zPosition));
 
-        zPositions.Add(zPosition);
+        _zPositions.Add(zPosition);
 
-        Vector3 position = new Vector3(transform.position.x, yPosition, zPosition);
+        Vector3 position = new Vector3(transform.position.x, _yPosition, zPosition);
         objectTransform.position = position;
     }
 
-    private void SpawnCollectibleWithChance() {
-        if (Random.Range(0f, 1f) <= 0.3f) {
+    private void SpawnCollectibleWithChance()
+    {
+        if (Random.Range(0f, 1f) <= 0.3f)
+        {
             SpawnCollectibleObject();
         }
     }
 
-    private void OnDestroy() {
-        zPositions.Clear();
-        objectTransformsList.Clear();
+    private void OnDestroy()
+    {
+        _zPositions.Clear();
+        _spawnedObjects.Clear();
     }
 
 }

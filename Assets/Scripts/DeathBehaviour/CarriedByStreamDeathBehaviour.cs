@@ -1,13 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Camera;
 
-public class CarriedByStreamDeathBehaviour : IDeathBehaviour {
+public class CarriedByStreamDeathBehaviour : IDeathBehaviour
+{
 
-    public void Execute() {
-        Zoom.Instance.ZoomIn();
+    public void Execute()
+    {
+        Zoom.ZoomInStarted?.Invoke();
 
-        FollowTarget.Instance.SetTarget(null);
+        FollowTarget.StopFollowingTarget?.Invoke();
     }
 
 }

@@ -1,11 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Camera;
 
-public class HitByTrainDeathBehaviour : IDeathBehaviour {
+public class HitByTrainDeathBehaviour : IDeathBehaviour
+{
 
-    public void Execute() {
-        Zoom.Instance.ZoomIn();
+    public void Execute()
+    {
+        Zoom.ZoomInStarted?.Invoke();
 
         Player.Instance.DeactivatePlayer();
     }

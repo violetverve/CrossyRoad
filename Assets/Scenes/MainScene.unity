@@ -1666,7 +1666,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9eaa6b8e478df024a8175f36f6ac255f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 664229593}
+  _target: {fileID: 664229593}
 --- !u!4 &1689960679
 Transform:
   m_ObjectHideFlags: 0
@@ -1694,9 +1694,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9510aec60fbbe7c43b9ee29222eb831d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zoomedInSize: 4
-  desiredDuration: 0.8
-  virtualCamera: {fileID: 361001307}
+  _zoomedInSize: 4
+  _desiredDuration: 0.8
+  _virtualCamera: {fileID: 361001307}
 --- !u!1 &1694523111
 GameObject:
   m_ObjectHideFlags: 0
