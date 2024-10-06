@@ -568,13 +568,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66a0e97bbacd6c640b0652c6e5de2eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grassTerrain: {fileID: 92764449249709162, guid: 99db40c9a10987e4eb07134bc44559d7, type: 3}
-  terrains:
-  - {fileID: 92764449249709162, guid: 99db40c9a10987e4eb07134bc44559d7, type: 3}
-  - {fileID: 92764449249709162, guid: 2e017961fa7a849459281c2f7e488a85, type: 3}
-  - {fileID: 92764449249709162, guid: 17319b0f602c3ad43859962a852c86e0, type: 3}
-  - {fileID: 92764449249709162, guid: 97381ccd788726444a34c8175a00c68e, type: 3}
-  - {fileID: 92764449249709162, guid: abf08ef680179b44995925435c09901b, type: 3}
+  _grassTerrain: {fileID: 5253556482641879440, guid: 99db40c9a10987e4eb07134bc44559d7, type: 3}
+  _terrains:
+  - {fileID: -5642664752277272207, guid: 17319b0f602c3ad43859962a852c86e0, type: 3}
+  - {fileID: 3757596436744918150, guid: 97381ccd788726444a34c8175a00c68e, type: 3}
+  terrainsNumber: 20
 --- !u!1 &579863377
 GameObject:
   m_ObjectHideFlags: 0

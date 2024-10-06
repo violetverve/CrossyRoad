@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 1004076800713364205}
   - component: {fileID: 5730693711229793582}
   - component: {fileID: 6411990404152519261}
+  - component: {fileID: 5253556482641879440}
+  - component: {fileID: 1855413439096304822}
   m_Layer: 0
   m_Name: GrassTerrain
   m_TagString: Untagged
@@ -118,6 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c2ab43d27bdf1f49a9425041f84f5da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _walkableTerrain: 1
   _terrainObjects:
   - {fileID: 6939038789709389965, guid: b0f99358cc1b8f147a3b59464640436c, type: 3}
   - {fileID: 7792612496940456821, guid: 6d222fde256430544999d3ed51d66e80, type: 3}
@@ -134,3 +137,37 @@ MonoBehaviour:
   _maxObjectCount: 6
   _yPosition: 0.5
   _rotate: 0
+--- !u!114 &5253556482641879440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8741595047675372717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 962ce608e73e544468f59a7b62121aa3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _type: 1
+  _objectManager: {fileID: 6411990404152519261}
+  _collectibleManager: {fileID: 1855413439096304822}
+--- !u!114 &1855413439096304822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8741595047675372717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 315c92a5bd52af74bb086ce358b1d463, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collectibles:
+  - {fileID: 6919571357498361695, guid: 73410b9d4601fa94498ac7721b00a78c, type: 3}
+  _maxZPosition: 10
+  _maxAmount: 1
+  _objectManager: {fileID: 6411990404152519261}
+  _yPosition: 0.5
+  _spawnProbability: 0.05

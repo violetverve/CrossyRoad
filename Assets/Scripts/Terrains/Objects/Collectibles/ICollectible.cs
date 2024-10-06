@@ -1,10 +1,12 @@
 using UnityEngine;
+using System;
 
-namespace Collectibles
+namespace Terrains.Objects.Collectibles
 {
     public interface ICollectible
     {
         Transform Transform { get; }
+        event Action<ICollectible> OnCollect;
         void Collect();
     }
 }

@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movingObjectSOList:
   - {fileID: 11400000, guid: f13f276b226bc524abf4e88deaea98b3, type: 2}
-  spawnedMovingObjects: []
+  spawnedObjectsMax: 5
   spawnIntervalMax: 4
   spawnIntervalMin: 2
   isRight: 1
@@ -63,6 +63,7 @@ GameObject:
   - component: {fileID: 1004076800713364205}
   - component: {fileID: 5730693711229793582}
   - component: {fileID: 2093174934251553489}
+  - component: {fileID: -1146962236101739144}
   m_Layer: 0
   m_Name: WaterTerrain
   m_TagString: WaterTerrain
@@ -169,3 +170,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41687d51cb5f18945af37e27ce32a9ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-1146962236101739144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8741595047675372717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 962ce608e73e544468f59a7b62121aa3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _type: 3
+  _objectManager: {fileID: 0}

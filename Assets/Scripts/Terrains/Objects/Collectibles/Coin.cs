@@ -1,11 +1,10 @@
 using UnityEngine;
+using System;
 
-namespace Collectibles
+namespace Terrains.Objects.Collectibles
 {
-    public class Coin : MonoBehaviour, ICollectible
+    public class Coin : CollectibleBase
     {
-        public Transform Transform => transform;
-
         private void OnTriggerEnter(Collider collider)
         {
             if (collider.GetComponent<Player>() != null)
@@ -14,10 +13,11 @@ namespace Collectibles
             }
         }
 
-        public void Collect()
+        public override void Collect()
         {
             InventoryManager.Instance.AddCoin();
-            Destroy(gameObject);
+
+            base.Collect();
         }
     }
 }

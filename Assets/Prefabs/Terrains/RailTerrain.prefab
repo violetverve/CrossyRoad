@@ -108,6 +108,7 @@ GameObject:
   - component: {fileID: 2635351968804454527}
   - component: {fileID: 1004076800713364205}
   - component: {fileID: 5730693711229793582}
+  - component: {fileID: 6414186035828698111}
   m_Layer: 0
   m_Name: RailTerrain
   m_TagString: Untagged
@@ -204,6 +205,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6414186035828698111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8741595047675372717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 962ce608e73e544468f59a7b62121aa3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _type: 2
+  _objectManager: {fileID: 0}
 --- !u!1001 &9092400261949080877
 PrefabInstance:
   m_ObjectHideFlags: 0

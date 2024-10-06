@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 5730693711229793582}
   - component: {fileID: 2093174934251553489}
   - component: {fileID: 1102325732164749139}
+  - component: {fileID: -5642664752277272207}
+  - component: {fileID: 430201435064612692}
   m_Layer: 0
   m_Name: WaterLilyPadsTerrain
   m_TagString: WaterTerrain
@@ -131,14 +133,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c2ab43d27bdf1f49a9425041f84f5da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _walkableTerrain: 0
   _terrainObjects:
   - {fileID: 282925520742485989, guid: d575af7475e02b440bb8dd0a674ffd72, type: 3}
   _collectibles: []
-  _minZPosition: -6
-  _maxZPosition: 6
+  _minZPosition: -4
+  _maxZPosition: 4
   _enableDeadZone: 0
   _deadZoneZ: 5
-  _minObjectCount: 4
-  _maxObjectCount: 6
+  _minObjectCount: 2
+  _maxObjectCount: 4
   _yPosition: 0.3
   _rotate: 1
+--- !u!114 &-5642664752277272207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8741595047675372717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 962ce608e73e544468f59a7b62121aa3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _type: 4
+  _objectManager: {fileID: 1102325732164749139}
+  _collectibleManager: {fileID: 430201435064612692}
+--- !u!114 &430201435064612692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8741595047675372717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 315c92a5bd52af74bb086ce358b1d463, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collectibles:
+  - {fileID: 6919571357498361695, guid: 73410b9d4601fa94498ac7721b00a78c, type: 3}
+  _maxZPosition: 10
+  _maxAmount: 1
+  _objectManager: {fileID: 1102325732164749139}
+  _yPosition: 0.5
+  _spawnProbability: 0.05
