@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: CarGreen
   m_EditorClassIdentifier: 
   objectTransform: {fileID: 1370350317053164611, guid: 6cc3e7358ee72704da8d7efbef791107, type: 3}
-  speed: 4
+  speed: 3

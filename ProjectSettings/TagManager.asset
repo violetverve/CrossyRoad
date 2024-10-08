@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Obstacle
   - WaterTerrain
+  - Vehicle
   layers:
   - Default
   - TransparentFX

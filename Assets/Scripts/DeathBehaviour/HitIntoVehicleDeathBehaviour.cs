@@ -6,6 +6,11 @@ public class HitIntoVehicleDeathBehaviour : IDeathBehaviour
     private static string HIT_INTO_VEHICLE_TRIGGER = "HitIntoVehicle";
     private Transform _vehicleTransform;
 
+    public HitIntoVehicleDeathBehaviour(Transform vehicleTransform)
+    {
+        this._vehicleTransform = vehicleTransform;
+    }
+
     public void Execute()
     {
         Zoom.ZoomInStarted?.Invoke();
@@ -20,10 +25,5 @@ public class HitIntoVehicleDeathBehaviour : IDeathBehaviour
         player.DisableCollider();
 
         player.transform.SetParent(_vehicleTransform);
-    }
-
-    public void SetVehicleTransform(Transform vehicleTransform)
-    {
-        this._vehicleTransform = vehicleTransform;
     }
 }
