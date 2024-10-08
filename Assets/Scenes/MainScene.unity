@@ -572,6 +572,7 @@ MonoBehaviour:
   _terrains:
   - {fileID: -5642664752277272207, guid: 17319b0f602c3ad43859962a852c86e0, type: 3}
   - {fileID: 3757596436744918150, guid: 97381ccd788726444a34c8175a00c68e, type: 3}
+  - {fileID: 6414186035828698111, guid: abf08ef680179b44995925435c09901b, type: 3}
   terrainsNumber: 20
 --- !u!1 &579863377
 GameObject:

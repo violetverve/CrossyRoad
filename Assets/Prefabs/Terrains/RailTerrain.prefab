@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 361c6fea790be6741a156cc867809138, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  railPrefab: {fileID: 847548289844316426, guid: 9ef01bd2e262e4a449e53e44f978921b, type: 3}
+  _railPrefab: {fileID: 847548289844316426, guid: 9ef01bd2e262e4a449e53e44f978921b, type: 3}
 --- !u!1 &6967093492193112263
 GameObject:
   m_ObjectHideFlags: 0
@@ -95,7 +95,7 @@ MonoBehaviour:
   spawnIntervalMax: 7
   spawnIntervalMin: 5
   isRight: 1
-  railLightsVisual: {fileID: 4489206081943380534}
+  _railLightsVisual: {fileID: 4489206081943380534}
 --- !u!1 &8741595047675372717
 GameObject:
   m_ObjectHideFlags: 0
@@ -219,6 +219,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _type: 2
   _objectManager: {fileID: 0}
+  _collectibleManager: {fileID: 0}
 --- !u!1001 &9092400261949080877
 PrefabInstance:
   m_ObjectHideFlags: 0
