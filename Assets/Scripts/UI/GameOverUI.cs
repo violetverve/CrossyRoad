@@ -1,38 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
-using UnityEngine.UI;
 
-public class GameOverUI : MonoBehaviour {
-
-    [SerializeField] private Button restartButton;
-
-    private void Start() {
-        restartButton.onClick.AddListener(RestartButton_OnClick);
-
-        CrossyGameManager.Instance.OnGameStateChanged += CrossyGameManager_OnGameStateChanged;
-
-        Hide();
-    }
-
-    private void CrossyGameManager_OnGameStateChanged(object sender, System.EventArgs e) {
-        if (CrossyGameManager.Instance.GetGameState() == CrossyGameManager.GameState.Dead) {
-            Show();
-        } else {
+namespace CrossyRoad.UI
+{
+    public class GameOverUI : MonoBehaviour
+    {
+        private void Awake()
+        {
             Hide();
         }
-    }
-
-    private void RestartButton_OnClick() {
-        CrossyGameManager.Instance.RestartGame();
-    }
-
-    private void Hide() {
-        gameObject.SetActive(false);
-    }
-
-    private void Show() {
-        gameObject.SetActive(true);
+        public void RestartScene()
+        {
+            CrossyGameManager.Instance.RestartGame();
+        }
+        public void Hide()
+        {
+            gameObject.SetActive(false);
+        }
+        public void Show()
+        {
+            gameObject.SetActive(true);
+        }
     }
 }

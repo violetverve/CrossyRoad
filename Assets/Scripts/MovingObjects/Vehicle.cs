@@ -1,5 +1,6 @@
 using UnityEngine;
-using System.Collections.Generic;
+using Utils;
+using CrossyRoad.Player;
 
 public class Vehicle : MovingObject 
 {
@@ -27,7 +28,7 @@ public class Vehicle : MovingObject
 
         _frontPlayerDetector.OnTriggerEnterEvent += OnFrontPlayerDetectorTriggerEnter;
 
-        _sidePlayerDetector.OnTriggerEnterEvent += OnSidePlayerDetectorTriggerEnter;
+        // _sidePlayerDetector.OnTriggerEnterEvent += OnSidePlayerDetectorTriggerEnter;
     }
 
     private void OnDisable() {
@@ -35,7 +36,7 @@ public class Vehicle : MovingObject
         _vehicleDetector.OnTriggerExitEvent -= OnVehicleDetectorTriggerExit;
 
         _frontPlayerDetector.OnTriggerEnterEvent -= OnFrontPlayerDetectorTriggerEnter;
-        _sidePlayerDetector.OnTriggerEnterEvent -= OnSidePlayerDetectorTriggerEnter;
+        // _sidePlayerDetector.OnTriggerEnterEvent -= OnSidePlayerDetectorTriggerEnter;
     }
 
     private void OnVehicleDetectorTriggerEnter(Collider other) {

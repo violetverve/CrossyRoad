@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7325615944543923312}
   m_Layer: 0
   m_Name: CarOrange
-  m_TagString: Untagged
+  m_TagString: Vehicle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -115,7 +115,7 @@ GameObject:
   - component: {fileID: 728684728771510405}
   m_Layer: 0
   m_Name: CarOrangeVisual
-  m_TagString: Untagged
+  m_TagString: Vehicle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -196,6 +196,10 @@ PrefabInstance:
     - target: {fileID: 2705182065857202221, guid: 5e02fd363febf6f4b8b7ca4e74ef3c67, type: 3}
       propertyPath: m_Name
       value: VehicleDetector
+      objectReference: {fileID: 0}
+    - target: {fileID: 2705182065857202221, guid: 5e02fd363febf6f4b8b7ca4e74ef3c67, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 2964417167671393207, guid: 5e02fd363febf6f4b8b7ca4e74ef3c67, type: 3}
       propertyPath: m_RootOrder
@@ -320,7 +324,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7990913420116756498, guid: 73ff13ade5711fc45ae2629e057b4f36, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Vehicle
       objectReference: {fileID: 0}
     - target: {fileID: 8061705737798984165, guid: 73ff13ade5711fc45ae2629e057b4f36, type: 3}
       propertyPath: m_Size.z
@@ -361,7 +365,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 973157753773531604, guid: 8cb18b0373d567849b5b1a373e2662b9, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Vehicle
       objectReference: {fileID: 0}
     - target: {fileID: 1766073358953446705, guid: 8cb18b0373d567849b5b1a373e2662b9, type: 3}
       propertyPath: m_RootOrder

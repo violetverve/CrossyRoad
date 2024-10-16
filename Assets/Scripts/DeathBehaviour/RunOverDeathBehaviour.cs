@@ -1,15 +1,16 @@
 using UnityEngine;
 using Camera;
+using CrossyRoad.Player;
 
 public class RunOverDeathBehaviour : IDeathBehaviour
 {
-    private static string RUN_OVER_TRIGGER = "RunOver";
+    private static string RunOverTrigger = "RunOver";
 
     public void Execute()
     {
         Zoom.ZoomInStarted?.Invoke();
 
-        PlayerVisual.Instance.PlayAnimation(RUN_OVER_TRIGGER);
+        PlayerVisual.Instance.PlayAnimation(RunOverTrigger);
 
         Player.Instance.SetKinematic(true);
     }

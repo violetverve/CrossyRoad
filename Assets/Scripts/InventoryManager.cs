@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System;
+using CrossyRoad.Player;
 
 public class InventoryManager : MonoBehaviour {
 
-    private const string COINS_KEY = "coins";
+    private const string CoinsKey = "coins";
     public static InventoryManager Instance { get; private set; }
     public event EventHandler OnCoinsChanged;
     public event EventHandler OnScoreChanged;
@@ -20,11 +19,12 @@ public class InventoryManager : MonoBehaviour {
         score = PlayerPrefs.GetInt("score", 0);
     }
 
-    private void Start() {
-        Player.Instance.OnNewMaxXPositionReached += Instance_OnNewMaxXPositionReached;
+    private void Start()
+    {    
+        PlayerMovement.OnNewMaxXPositionReached += HandleOnNewMaxXPositionReached;
     }
 
-    private void Instance_OnNewMaxXPositionReached(object sender, System.EventArgs e) {
+    private void HandleOnNewMaxXPositionReached() {
         AddScore(1);
     }
 
@@ -47,10 +47,10 @@ public class InventoryManager : MonoBehaviour {
     }
 
     public void Save() {
-        PlayerPrefs.SetInt(COINS_KEY, coins);
+        PlayerPrefs.SetInt(CoinsKey, coins);
     }
 
     private int LoadCoins() {
-        return PlayerPrefs.GetInt(COINS_KEY, 0);
+        return PlayerPrefs.GetInt(CoinsKey, 0);
     }
 }

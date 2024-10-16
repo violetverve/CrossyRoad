@@ -1,60 +1,79 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
+using CrossyRoad.Player;
 
-public class CrossyGameManager : MonoBehaviour {
+public class CrossyGameManager : MonoBehaviour
+{
 
     public static CrossyGameManager Instance { get; private set; }
-    public enum GameState {
+    public enum GameState
+    {
         Start,
         Playing,
         Dead
     }
 
-    public event EventHandler OnGameStateChanged;
+    public static event Action OnGameStateChanged;
 
-    private GameState gameState;
+    private GameState _gameState;
 
-    private void Awake() {
+    private void Awake()
+    {
         Instance = this;
     }
 
-    private void Start() {
-        SetGameState(GameState.Start);
-
-        Player.Instance.OnPlayerMoved += Player_OnPlayerMoved;
-        Player.Instance.OnPlayerDied += Player_OnPlayerDied;
+    private void OnEnable()
+    {
+        PlayerMovement.OnPlayerMoved += HandleOnPlayerMoved;
+        Player.OnPlayerDied += HandleOnPlayerDied;
     }
 
-    private void Player_OnPlayerMoved(object sender, System.EventArgs e) {
-        if (gameState == GameState.Start) {
+    private void OnDisable()
+    {
+        PlayerMovement.OnPlayerMoved -= HandleOnPlayerMoved;
+        Player.OnPlayerDied -= HandleOnPlayerDied;
+    }
+
+    private void Start()
+    {
+        SetGameState(GameState.Start);
+    }
+
+    private void HandleOnPlayerMoved()
+    {
+        if (_gameState == GameState.Start)
+        {
             SetGameState(GameState.Playing);
         }
     }
 
-    private void Player_OnPlayerDied(object sender, System.EventArgs e) {
+    private void HandleOnPlayerDied()
+    {
         SetGameState(GameState.Dead);
     }
 
-    public GameState GetGameState() {
-        return gameState;
+    public GameState GetGameState()
+    {
+        return _gameState;
     }
 
-    public bool IsPlaying() {
-        return gameState == GameState.Playing;
+    public bool IsPlaying()
+    {
+        return _gameState == GameState.Playing;
     }
 
-    public void SetGameState(GameState gameState) {
-        if (this.gameState == gameState) {
-            return;
+    public void SetGameState(GameState gameState)
+    {
+        if (_gameState != gameState)
+        {
+            _gameState = gameState;
+            OnGameStateChanged?.Invoke();
         }
-        this.gameState = gameState;
-        OnGameStateChanged?.Invoke(this, EventArgs.Empty);
     }
 
-    public void RestartGame() {
+    public void RestartGame()
+    {
         InventoryManager.Instance.Save();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }

@@ -1,9 +1,10 @@
 using UnityEngine;
 using Camera;
+using CrossyRoad.Player;
 
 public class HitIntoVehicleDeathBehaviour : IDeathBehaviour
 {
-    private static string HIT_INTO_VEHICLE_TRIGGER = "HitIntoVehicle";
+    private static string HitIntoVehicleTrigger = "HitIntoVehicle";
     private Transform _vehicleTransform;
 
     public HitIntoVehicleDeathBehaviour(Transform vehicleTransform)
@@ -17,7 +18,7 @@ public class HitIntoVehicleDeathBehaviour : IDeathBehaviour
 
         FollowTarget.StopFollowingTarget?.Invoke();
 
-        PlayerVisual.Instance.PlayAnimation(HIT_INTO_VEHICLE_TRIGGER);
+        PlayerVisual.Instance.PlayAnimation(HitIntoVehicleTrigger);
 
         Player player = Player.Instance;
 

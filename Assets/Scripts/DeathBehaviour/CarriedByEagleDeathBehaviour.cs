@@ -1,5 +1,6 @@
 using UnityEngine;
 using Camera;
+using CrossyRoad.Player;
 
 public class CarriedByEagleDeathBehaviour : IDeathBehaviour
 {

@@ -156,8 +156,6 @@ namespace Terrains.Objects
             DestroyUnneededObjects(curObjectsNum, newObjectsNum);
             RepositionNeededObjects(oldObjectsToReposition, obligatoryWalkablePositions);
             SpawnNewObjects(newObjectsToSpawn, obligatoryWalkablePositions);
-
-            // SpawnCollectibleWithChance();
         }
 
         private void DestroyUnneededObjects(int curObjectsNum, int newObjectsNum)
@@ -294,12 +292,6 @@ namespace Terrains.Objects
             }
         }
 
-        private void OnDestroy()
-        {
-            _zPositions.Clear();
-            _spawnedObjects.Clear();
-        }
-
         public List<int> GetWalkableZPositions()
         {
             var walkablePositions = new List<int>();
@@ -347,14 +339,12 @@ namespace Terrains.Objects
                 else
                 {
                     segments.Add((segmentStart, segmentEnd));
-                    Debug.Log("Segment: " + segmentStart + " " + segmentEnd);
                     segmentStart = sortedPositions[i];
                     segmentEnd = sortedPositions[i];
                 }
             }
 
             segments.Add((segmentStart, segmentEnd));
-            Debug.Log("Segment: " + segmentStart + " " + segmentEnd);
 
             return segments;
         }

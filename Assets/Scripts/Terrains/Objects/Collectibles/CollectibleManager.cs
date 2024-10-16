@@ -58,8 +58,6 @@ namespace Terrains.Objects.Collectibles
 
         public void SpawnCollectible(int zPosition)
         {
-            Debug.Log("SpawnCollectible");
-
             if (_collectibles.Count == 0 || _spawnedCollectibles.Count >= _maxAmount)
             {
                 return;

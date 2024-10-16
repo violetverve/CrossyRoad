@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using CrossyRoad.Player;
 
 namespace Terrains
 {
@@ -21,10 +22,15 @@ namespace Terrains
         private const int MaxGrassSpawnInterval = 6;
         private int nextGrassTerrain;
 
+        private void OnEnable() {
+            PlayerMovement.OnPlayerXPositionChanged += HandleOnPlayerXPositionChanged;
+        }
+
+        private void OnDisable() {
+           PlayerMovement.OnPlayerXPositionChanged -= HandleOnPlayerXPositionChanged;
+        }
         
         private void Start() {
-            Player.Instance.OnPlayerXPositionChanged += Player_OnPlayerXPositionChanged;
-        
             ResetNextGrassTerrain();
 
             _spawnedTerrains = new List<TerrainPlatform>();
@@ -67,7 +73,7 @@ namespace Terrains
             return terrainToSpawn;
         }
 
-        private void Player_OnPlayerXPositionChanged(object sender, System.EventArgs e) {
+        private void HandleOnPlayerXPositionChanged() {
             float xDifference = Player.Instance.GetXPosition() - _spawnedTerrains[0].transform.position.x;
 
             if (xDifference < destructionOffset) return;
@@ -94,10 +100,6 @@ namespace Terrains
             _spawnedTerrains.Add(terrain);
             _spawnedTerrains.RemoveAt(index);
 
-        }
-
-        private void OnDestroy() {
-            Player.Instance.OnPlayerXPositionChanged -= Player_OnPlayerXPositionChanged;
         }
 
         private void DestroyTerrainAt(int index) {
