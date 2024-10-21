@@ -49,8 +49,6 @@ namespace Terrains.Objects
             }
 
             SpawnNewObjects(objectsToSpawn, obligatoryWalkablePositions);
-
-            // SpawnCollectibleWithChance();
         }
 
         private int GetUniqueZPosition()

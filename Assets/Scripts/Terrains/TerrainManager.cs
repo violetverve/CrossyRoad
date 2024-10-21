@@ -6,119 +6,141 @@ using CrossyRoad.Player;
 
 namespace Terrains
 {
-    public class TerrainManager : MonoBehaviour {
+    public class TerrainManager : MonoBehaviour
+    {
 
         [SerializeField] private TerrainPlatform _grassTerrain;
         [SerializeField] private List<TerrainPlatform> _terrains;
         private List<TerrainPlatform> _spawnedTerrains;
 
-        private int destructionOffset = 8;
-        [SerializeField] private int terrainsNumber = 20;
-        private int startSpawningXPosition = -4;
-        private int safeGrassTerrainsZone = 8;
+        private int _destructionOffset = 8;
+        [SerializeField] private int _terrainsNumber = 20;
+        private int _startSpawningXPosition = -4;
+        private int _safeGrassTerrainsZone = 8;
         private int repositionedTerrains = 0;
-        private int WithoutGrassTerrainCounter = 0;
+        private int _withoutGrassTerrainCounter = 0;
         private const int MinGrassSpawnInterval = 3;
         private const int MaxGrassSpawnInterval = 6;
-        private int nextGrassTerrain;
+        private int _nextGrassTerrain;
+        private TerrainPlatform _previousObjectManagerTerrain;
 
-        private void OnEnable() {
+        private void OnEnable()
+        {
             PlayerMovement.OnPlayerXPositionChanged += HandleOnPlayerXPositionChanged;
         }
 
-        private void OnDisable() {
-           PlayerMovement.OnPlayerXPositionChanged -= HandleOnPlayerXPositionChanged;
+        private void OnDisable()
+        {
+            PlayerMovement.OnPlayerXPositionChanged -= HandleOnPlayerXPositionChanged;
         }
-        
-        private void Start() {
+
+        private void Start()
+        {
             ResetNextGrassTerrain();
 
             _spawnedTerrains = new List<TerrainPlatform>();
 
-            for (int i = 0; i < terrainsNumber; i++) {
+            for (int i = 0; i < _terrainsNumber; i++)
+            {
                 TerrainPlatform newTerrain;
-                Vector3 position = new Vector3(i + startSpawningXPosition, 0, 0);
-                if (i < safeGrassTerrainsZone) {
+                Vector3 position = new Vector3(i + _startSpawningXPosition, 0, 0);
+                if (i < _safeGrassTerrainsZone)
+                {
                     newTerrain = _grassTerrain;
-                } else {
+                }
+                else
+                {
                     newTerrain = GetNewTerrainToSpawn();
                 }
-                
-                var previousTerrain = i == 0 ? null : _spawnedTerrains[i-1];
-                SpawnTerrain(newTerrain, position, previousTerrain);
-            
+
+                SpawnTerrain(newTerrain, position);
             }
         }
 
-        private void Update() {
-            if (Input.GetKeyDown(KeyCode.Q)) {
-                RepositionTerrainAt(0);
-            }
+        private void ResetNextGrassTerrain()
+        {
+            _nextGrassTerrain = Random.Range(MinGrassSpawnInterval, MaxGrassSpawnInterval);
         }
 
-        private void ResetNextGrassTerrain() {
-            nextGrassTerrain = Random.Range(MinGrassSpawnInterval, MaxGrassSpawnInterval);
-        }
-
-        private TerrainPlatform GetNewTerrainToSpawn() {
+        private TerrainPlatform GetNewTerrainToSpawn()
+        {
             TerrainPlatform terrainToSpawn;
-            WithoutGrassTerrainCounter++;
-            if (WithoutGrassTerrainCounter == nextGrassTerrain) {
-                WithoutGrassTerrainCounter = 0;
+            _withoutGrassTerrainCounter++;
+            if (_withoutGrassTerrainCounter == _nextGrassTerrain)
+            {
+                _withoutGrassTerrainCounter = 0;
                 terrainToSpawn = _grassTerrain;
                 ResetNextGrassTerrain();
-            } else {
+            }
+            else
+            {
                 terrainToSpawn = _terrains[Random.Range(0, _terrains.Count)];
             }
             return terrainToSpawn;
         }
 
-        private void HandleOnPlayerXPositionChanged() {
+        private void HandleOnPlayerXPositionChanged()
+        {
             float xDifference = Player.Instance.GetXPosition() - _spawnedTerrains[0].transform.position.x;
 
-            if (xDifference < destructionOffset) return;
+            if (xDifference < _destructionOffset) return;
 
-            if (repositionedTerrains < safeGrassTerrainsZone) {
+            if (repositionedTerrains < _safeGrassTerrainsZone)
+            {
                 repositionedTerrains++;
 
-                SpawnTerrain(GetNewTerrainToSpawn(), GetNextTerrainPosition(), _spawnedTerrains.Last());
+                SpawnTerrain(GetNewTerrainToSpawn(), GetNextTerrainPosition());
                 DestroyTerrainAt(0);
-            } else {
-            
+            }
+            else
+            {
                 RepositionTerrainAt(0);
             }
         }
 
-        private void RepositionTerrainAt(int index) {
+        private void RepositionTerrainAt(int index)
+        {
             var terrain = _spawnedTerrains[index];
             terrain.transform.position = GetNextTerrainPosition();
 
-            var previousTerrain = _spawnedTerrains.Last();
+            terrain.RepositionObjects(_previousObjectManagerTerrain);
 
-            terrain.RepositionObjects(previousTerrain);
+            SetIfPreviousTerrainHasObjectManager(terrain);
 
             _spawnedTerrains.Add(terrain);
             _spawnedTerrains.RemoveAt(index);
 
         }
 
-        private void DestroyTerrainAt(int index) {
+        private void DestroyTerrainAt(int index)
+        {
             var terrain = _spawnedTerrains[index];
             _spawnedTerrains.RemoveAt(index);
             Destroy(terrain.gameObject);
         }
 
-        private Vector3 GetNextTerrainPosition() {
+        private Vector3 GetNextTerrainPosition()
+        {
             return new Vector3(_spawnedTerrains[_spawnedTerrains.Count - 1].transform.position.x + 1, 0, 0);
         }
 
-        private void SpawnTerrain(TerrainPlatform newTerrainPrefab, Vector3 position, TerrainPlatform previiusTerrainPlatform)
+        private void SpawnTerrain(TerrainPlatform newTerrainPrefab, Vector3 position)
         {
             TerrainPlatform terrain = Instantiate(newTerrainPrefab, position, Quaternion.identity);
-            terrain.Initialize(previiusTerrainPlatform);        
+            terrain.Initialize(_previousObjectManagerTerrain);
             terrain.transform.parent = transform;
             _spawnedTerrains.Add(terrain);
-        } 
+
+            SetIfPreviousTerrainHasObjectManager(terrain);
+        }
+
+        private void SetIfPreviousTerrainHasObjectManager(TerrainPlatform terrain)
+        {
+            if (terrain.ObjectManager != null)
+            {
+                _previousObjectManagerTerrain = terrain;
+            }
+        }
     }
 
 }
