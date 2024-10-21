@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7325615944543923312}
   m_Layer: 0
   m_Name: CarOrange
-  m_TagString: Vehicle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -115,7 +115,7 @@ GameObject:
   - component: {fileID: 728684728771510405}
   m_Layer: 0
   m_Name: CarOrangeVisual
-  m_TagString: Vehicle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -381,7 +381,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1766073358953446705, guid: 8cb18b0373d567849b5b1a373e2662b9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.09
+      value: -0.1
       objectReference: {fileID: 0}
     - target: {fileID: 1766073358953446705, guid: 8cb18b0373d567849b5b1a373e2662b9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -413,7 +413,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3546534834481992769, guid: 8cb18b0373d567849b5b1a373e2662b9, type: 3}
       propertyPath: m_Size.z
-      value: 1
+      value: 0.9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 282613964970725194}
   m_Layer: 0
   m_Name: CarGreen
-  m_TagString: Vehicle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -115,7 +115,7 @@ GameObject:
   - component: {fileID: 2245918691587970894}
   m_Layer: 0
   m_Name: CarGreenVisual
-  m_TagString: Vehicle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -247,7 +247,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3546534834481992769, guid: 8cb18b0373d567849b5b1a373e2662b9, type: 3}
       propertyPath: m_Size.z
-      value: 1.1
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

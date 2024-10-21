@@ -113,5 +113,10 @@ namespace CrossyRoad.Player
             OnPlayerMoved?.Invoke();
         }
 
+        public bool IsMoveToSide(Vector3 direction)
+        {
+            return direction.z != 0;
+        }
+
     }
 }
