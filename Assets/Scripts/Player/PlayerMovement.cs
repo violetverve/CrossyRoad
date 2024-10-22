@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System;
 using System.Linq;
 
-namespace CrossyRoad.Player
+namespace CrossyRoad.Players
 {
     public class PlayerMovement : MonoBehaviour
     {

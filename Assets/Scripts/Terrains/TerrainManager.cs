@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-using CrossyRoad.Player;
+using CrossyRoad.Players;
 
-namespace Terrains
+namespace CrossyRoad.Terrains
 {
     public class TerrainManager : MonoBehaviour
     {

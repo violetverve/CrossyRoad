@@ -1,8 +1,8 @@
 using UnityEngine;
-using Terrains.Objects;
-using Terrains.Objects.Collectibles;
+using CrossyRoad.Terrains.Objects;
+using CrossyRoad.Terrains.Objects.Collectibles;
 
-namespace Terrains
+namespace CrossyRoad.Terrains
 {
     public class TerrainPlatform : MonoBehaviour
     {

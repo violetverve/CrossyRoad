@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace CrossyRoad.Player.States
+namespace CrossyRoad.Players.States
 {
     public class PlayerStateFactory
     {

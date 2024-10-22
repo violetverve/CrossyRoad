@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Terrains.Rails
+namespace CrossyRoad.Terrains.Rails
 {
     public class RailsManager : MonoBehaviour
     {

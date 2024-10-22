@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dad0be4c3fcf0f4baaf1bb8166a7230, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movingObjectSO: {fileID: 11400000, guid: d82593110f9bc904d9b482c9c1f46c29, type: 2}
+  _movingObjectSO: {fileID: 11400000, guid: d82593110f9bc904d9b482c9c1f46c29, type: 2}
   _vehicleDetector: {fileID: 5710843797244079167}
   _frontPlayerDetector: {fileID: 7635962676448214979}
   _sidePlayerDetector: {fileID: 1518072510414186537}

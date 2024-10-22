@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Terrains
+namespace CrossyRoad.Terrains
 {
     public enum TerrainPlatformType 
     {

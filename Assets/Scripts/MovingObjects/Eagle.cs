@@ -1,21 +1,24 @@
 using UnityEngine;
 
-public class Eagle : MovingObject
+namespace CrossyRoad.MovingObjects
 {
-    private const string IS_FLYING = "isFlying";
-    private Vector3 _eagleDirection = new Vector3(-1, 0, 0);
-
-    private Animator animator;
-
-    private void Awake()
+    public class Eagle : MovingObject
     {
-        animator = GetComponent<Animator>();
-    }
+        private const string IS_FLYING = "isFlying";
+        private Vector3 _eagleDirection = new Vector3(-1, 0, 0);
 
-    private void Start()
-    {
-        SetDirection(_eagleDirection);
+        private Animator animator;
 
-        animator.SetBool(IS_FLYING, true);
+        private void Awake()
+        {
+            animator = GetComponent<Animator>();
+        }
+
+        protected override void Start()
+        {
+            SetDirection(_eagleDirection);
+
+            animator.SetBool(IS_FLYING, true);
+        }
     }
 }

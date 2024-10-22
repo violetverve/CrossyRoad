@@ -1,4 +1,5 @@
 using UnityEngine;
+using CrossyRoad.Management;
 
 namespace CrossyRoad.UI
 {

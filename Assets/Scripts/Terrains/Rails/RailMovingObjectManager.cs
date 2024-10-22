@@ -1,6 +1,7 @@
 using UnityEngine;
+using CrossyRoad.MovingObjects;
 
-namespace Terrains.Rails
+namespace CrossyRoad.Terrains.Rails
 {
     public class RailMovingObjectManager : MovingObjectManager
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-namespace Terrains.Objects
+namespace CrossyRoad.Terrains.Objects
 {
     public class ObjectManager : MonoBehaviour
     {

@@ -150,5 +150,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50cbb39c71157754aa020777b1fa30b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movingObjectSO: {fileID: 11400000, guid: f13f276b226bc524abf4e88deaea98b3, type: 2}
-  safeStayTime: 2
+  _movingObjectSO: {fileID: 11400000, guid: f13f276b226bc524abf4e88deaea98b3, type: 2}
+  _safeStayTime: 2

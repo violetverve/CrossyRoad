@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 using System.Linq;
 
-namespace Terrains.Objects.Collectibles
+namespace CrossyRoad.Terrains.Objects.Collectibles
 {
     public class CollectibleManager : MonoBehaviour
     {

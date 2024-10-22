@@ -1,47 +1,52 @@
 using UnityEngine;
-using CrossyRoad.Player;
+using CrossyRoad.Players;
 
-public class Log : MovingObject
+namespace CrossyRoad.MovingObjects
 {
-    [SerializeField] private float safeStayTime = 2f;
-    private float safeStayTimer;
-    private bool playerOnLog = false;
-
-    private void Update()
+    public class Log : MovingObject
     {
-        UpdatePosition();
+        [SerializeField] private float _safeStayTime = 2f;
+        private float _safeStayTimer;
+        private bool _isPlayerOnLog = false;
 
-        if (playerOnLog)
+        protected override void Update()
         {
-            safeStayTimer += Time.deltaTime;
+            base.Update();
 
-            if (safeStayTimer >= safeStayTime)
+            UpdatePosition();
+
+            if (_isPlayerOnLog)
             {
-                safeStayTimer = 0;
-                playerOnLog = false;
-                Player.Instance.Die(new CarriedByStreamDeathBehaviour());
+                _safeStayTimer += Time.deltaTime;
+
+                if (_safeStayTimer >= _safeStayTime)
+                {
+                    _safeStayTimer = 0;
+                    _isPlayerOnLog = false;
+                    Player.Instance.Die(new CarriedByStreamDeathBehaviour());
+                }
             }
         }
-    }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        Player player = collision.gameObject.GetComponent<Player>();
-        if (player != null)
+        private void OnCollisionEnter(Collision collision)
         {
-            player.transform.SetParent(transform);
-            playerOnLog = true;
+            Player player = collision.gameObject.GetComponent<Player>();
+            if (player != null)
+            {
+                player.transform.SetParent(transform);
+                _isPlayerOnLog = true;
+            }
         }
-    }
 
-    private void OnCollisionExit(Collision collision)
-    {
-        Player player = collision.gameObject.GetComponent<Player>();
-        if (player != null && player.transform.parent == transform)
+        private void OnCollisionExit(Collision collision)
         {
-            player.transform.SetParent(null);
+            Player player = collision.gameObject.GetComponent<Player>();
+            if (player != null && player.transform.parent == transform)
+            {
+                player.transform.SetParent(null);
+            }
+            _isPlayerOnLog = false;
         }
-        playerOnLog = false;
-    }
 
+    }
 }

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Eagle
   m_EditorClassIdentifier: 
   objectTransform: {fileID: 483968518969271516, guid: 03bc5b01c6db90d4bb7c54f9ca0b61bd, type: 3}
-  speed: 6
+  speed: 7

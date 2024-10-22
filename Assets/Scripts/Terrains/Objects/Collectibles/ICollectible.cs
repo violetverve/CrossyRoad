@@ -1,7 +1,7 @@
 using UnityEngine;
 using System;
 
-namespace Terrains.Objects.Collectibles
+namespace CrossyRoad.Terrains.Objects.Collectibles
 {
     public interface ICollectible
     {

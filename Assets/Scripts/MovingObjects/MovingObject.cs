@@ -1,42 +1,43 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class MovingObject : MonoBehaviour
+namespace CrossyRoad.MovingObjects
 {
-
-    [SerializeField] private MovingObjectSO movingObjectSO;
-    private Vector3 direction;
-
-    public MovingObjectSO MovingObjectSO => movingObjectSO;
-    public Vector3 Direction => direction;
-
-    protected virtual void Start()
+    public class MovingObject : MonoBehaviour
     {
-        SetupStartDirection();
-    }
+        [SerializeField] private MovingObjectSO _movingObjectSO;
+        private Vector3 _direction;
 
-    protected virtual void Update()
-    {
-        UpdatePosition();
-    }
+        public MovingObjectSO MovingObjectSO => _movingObjectSO;
+        public Vector3 Direction => _direction;
 
-    protected void UpdatePosition()
-    {
-        transform.position += direction * movingObjectSO.speed * Time.deltaTime;
-    }
-
-    protected void SetupStartDirection()
-    {
-        if (direction == Vector3.zero)
+        protected virtual void Start()
         {
-            direction = transform.forward;
+            SetupStartDirection();
         }
-    }
 
-    protected void SetDirection(Vector3 newDirection)
-    {
-        direction = newDirection;
-    }
+        protected virtual void Update()
+        {
+            UpdatePosition();
+        }
 
+        protected void UpdatePosition()
+        {
+            transform.position += _direction * _movingObjectSO.speed * Time.deltaTime;
+        }
+
+        protected void SetupStartDirection()
+        {
+            if (_direction == Vector3.zero)
+            {
+                _direction = transform.forward;
+            }
+        }
+
+        protected void SetDirection(Vector3 newDirection)
+        {
+            _direction = newDirection;
+        }
+
+    }
 }
+

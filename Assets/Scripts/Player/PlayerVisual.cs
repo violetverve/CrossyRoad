@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace CrossyRoad.Player
+namespace CrossyRoad.Players
 {
     public class PlayerVisual : MonoBehaviour
     {

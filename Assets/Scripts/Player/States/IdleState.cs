@@ -1,7 +1,7 @@
 using UnityEngine;
+using CrossyRoad.MovingObjects;
 
-
-namespace CrossyRoad.Player.States
+namespace CrossyRoad.Players.States
 {
     public class IdleState : PlayerStateBase
     {

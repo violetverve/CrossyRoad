@@ -1,12 +1,17 @@
 using UnityEngine;
-using CrossyRoad.Player;
+using CrossyRoad.Players;
 
-public class WaterTerrain : MonoBehaviour {
-
-    private void OnTriggerEnter(Collider other)
+namespace CrossyRoad.Terrains
+{
+    public class WaterTerrain : MonoBehaviour
     {
-        if (other.gameObject.GetComponent<Player>() != null) {
-            Player.Instance.Die(new DrownDeathBehaviour());
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.GetComponent<Player>() != null)
+            {
+                Player.Instance.Die(new DrownDeathBehaviour());
+            }
         }
     }
 }

@@ -1,6 +1,7 @@
 using UnityEngine;
 using Camera;
-using CrossyRoad.Player;
+using CrossyRoad.Players;
+using CrossyRoad.Management;
 
 public class DrownDeathBehaviour : IDeathBehaviour
 {

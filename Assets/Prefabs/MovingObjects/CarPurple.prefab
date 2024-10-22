@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dad0be4c3fcf0f4baaf1bb8166a7230, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movingObjectSO: {fileID: 11400000, guid: 887a207d66b4dfd4bbb8cb01685286a9, type: 2}
+  _movingObjectSO: {fileID: 11400000, guid: 887a207d66b4dfd4bbb8cb01685286a9, type: 2}
   _vehicleDetector: {fileID: 7191516082995773860}
   _frontPlayerDetector: {fileID: 4055896325925552041}
   _sidePlayerDetector: {fileID: 5333659520555437943}

@@ -1,8 +1,8 @@
 using System;
 using UnityEngine;
-using CrossyRoad.Player.States;
+using CrossyRoad.Players.States;
 
-namespace CrossyRoad.Player
+namespace CrossyRoad.Players
 {
     public class Player : MonoBehaviour
     {

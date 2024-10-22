@@ -152,8 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 661613ceaab027a42b80c94e719c00ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movingObjectSO: {fileID: 11400000, guid: 282a7d0f9b84a09438c5e12f9fdc3137, type: 2}
-  direction: {x: -1, y: 0, z: 0}
+  _movingObjectSO: {fileID: 11400000, guid: 282a7d0f9b84a09438c5e12f9fdc3137, type: 2}
 --- !u!1 &6939615876808188303
 GameObject:
   m_ObjectHideFlags: 0

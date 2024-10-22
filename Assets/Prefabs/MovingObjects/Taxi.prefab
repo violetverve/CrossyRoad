@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dad0be4c3fcf0f4baaf1bb8166a7230, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movingObjectSO: {fileID: 11400000, guid: 1e76fecbeed24c2438904c2dfedb74d8, type: 2}
+  _movingObjectSO: {fileID: 11400000, guid: 1e76fecbeed24c2438904c2dfedb74d8, type: 2}
   _vehicleDetector: {fileID: 2553158583763329705}
   _frontPlayerDetector: {fileID: 69996712628163036}
   _sidePlayerDetector: {fileID: 7285713408543728572}

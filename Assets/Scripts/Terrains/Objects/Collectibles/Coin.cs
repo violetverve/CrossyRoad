@@ -1,8 +1,9 @@
 using UnityEngine;
 using System;
-using CrossyRoad.Player;
+using CrossyRoad.Players;
+using CrossyRoad.Management;
 
-namespace Terrains.Objects.Collectibles
+namespace CrossyRoad.Terrains.Objects.Collectibles
 {
     public class Coin : CollectibleBase
     {

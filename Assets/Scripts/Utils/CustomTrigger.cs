@@ -1,7 +1,7 @@
 using UnityEngine;
 using System;
 
-namespace Utils
+namespace CrossyRoad.Utils
 {
     public class CustomTrigger : MonoBehaviour
     {
