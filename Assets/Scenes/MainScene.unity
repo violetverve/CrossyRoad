@@ -1300,7 +1300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 528ea2c62ebdeab47b8654079a97274b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxTimeWithoutMoving: 3
+  maxTimeWithoutMoving: 4
 --- !u!1 &1519932615
 GameObject:
   m_ObjectHideFlags: 0
