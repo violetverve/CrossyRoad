@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 using System.Collections.Generic;
 using System;
 using System.Linq;
+using CrossyRoad.Utils;
 
 namespace CrossyRoad.Players
 {
@@ -39,6 +40,28 @@ namespace CrossyRoad.Players
         public static event Action OnPlayerXPositionChanged;
         public static event Action<Vector3> OnMovePressed;
 
+        private void OnEnable()
+        {
+            SwipeInput.SwipeDetected += HandleSwipeDetected;
+            SwipeInput.TapDetected += HandleTapDetected;
+        }
+
+        private void OnDisable()
+        {
+            SwipeInput.SwipeDetected -= HandleSwipeDetected;
+            SwipeInput.TapDetected -= HandleTapDetected;
+        }
+
+        private void HandleSwipeDetected(Vector2 direction)
+        {
+            HandleMove(direction);
+        }
+
+        private void HandleTapDetected()
+        {
+            HandleMove(Vector2.up);
+        }
+
         public void OnMove(InputValue value)
         {
             var direction = value.Get<Vector2>();
@@ -48,6 +71,15 @@ namespace CrossyRoad.Players
                 return;
             }
 
+            HandleMove(direction);
+
+            //var convertedDirection = MoveDirection.ConvertToVector3(direction);
+
+            //OnMovePressed?.Invoke(convertedDirection);
+        }
+
+        public void HandleMove(Vector3 direction)
+        {
             var convertedDirection = MoveDirection.ConvertToVector3(direction);
 
             OnMovePressed?.Invoke(convertedDirection);
